@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<NotepadPlus>
+    <!--
+    You can organize you Macro menu & Run menu by adding the attribute 'FolderName="My sub-menu name"' to any Macro or Command node.
+    This will place the corresponding node within a "My sub-menu name" sub-menu in the appropriate menu. Please consider the following examples:
+    -->
+    <InternalCommands>
+        <Shortcut id="44019" Ctrl="yes" Alt="no" Shift="yes" Key="56" />
+        <Shortcut id="41017" Ctrl="no" Alt="no" Shift="no" Key="113" />
+        <Shortcut id="43006" Ctrl="no" Alt="no" Shift="no" Key="0" />
+        <Shortcut id="41001" Ctrl="yes" Alt="no" Shift="no" Key="84" />
+        <Shortcut id="10004" Ctrl="no" Alt="no" Shift="no" Key="0" />
+        <Shortcut id="49000" Ctrl="no" Alt="no" Shift="no" Key="0" />
+        <Shortcut id="41014" Ctrl="no" Alt="no" Shift="no" Key="0" />
+        <Shortcut id="42022" Ctrl="yes" Alt="no" Shift="no" Key="82" />
+    </InternalCommands>
+    <Macros>
+        <Macro name="Trim Trailing Space and Save" Ctrl="no" Alt="yes" Shift="yes" Key="83">
+            <Action type="2" message="0" wParam="42024" lParam="0" sParam="" />
+            <Action type="2" message="0" wParam="41006" lParam="0" sParam="" />
+        </Macro>
+    </Macros>
+    <UserDefinedCommands>
+        <Command name="Get PHP help" Ctrl="no" Alt="yes" Shift="no" Key="112">https://www.php.net/$(CURRENT_WORD)</Command>
+        <Command name="Wikipedia Search" Ctrl="no" Alt="yes" Shift="no" Key="114">https://en.wikipedia.org/wiki/Special:Search?search=$(CURRENT_WORD)</Command>
+        <Command name="Open selected file path in new instance" Ctrl="yes" Alt="no" Shift="no" Key="78">$(NPP_FULL_FILE_PATH) $(CURRENT_WORD) -nosession -multiInst</Command>
+        <Command name="Run in Default App" Ctrl="no" Alt="no" Shift="no" Key="116">$(FULL_CURRENT_PATH)</Command>
+    </UserDefinedCommands>
+    <PluginCommands />
+    <ScintillaKeys>
+        <ScintKey ScintID="2339" menuCmdID="0" Ctrl="yes" Alt="yes" Shift="yes" Key="84" />
+    </ScintillaKeys>
+</NotepadPlus>
