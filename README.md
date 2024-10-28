@@ -1,6 +1,6 @@
 # Notepad++ custom settings
 
-Actual NPP settings are in %appdata%\Notepad++, not C:\Program Files\Notepad++
+Actual NPP settings are in %appdata%\Notepad++, not C:\Program Files\Notepad++ (where startmenu link takes you)
 
 Hide menu bar, toolbar
 To commit and pull: 
