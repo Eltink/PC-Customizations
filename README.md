@@ -2,17 +2,25 @@
 
 Actual NPP settings are in %appdata%\Notepad++, not C:\Program Files\Notepad++ (where startmenu link takes you)
 
-Hide menu bar, toolbar
+
 To commit and pull: 
 - exit on close last tab
 - hide status bar
 
+What i changed from default:
+- Hide menu bar (with all the icons)
+- Hide toolbar (File, Edit, ...)
+- Unchecked "Display bookmark" for more horizontal place
+
 | Hotkey | Was | Is | Source |
 | --- | --- | --- | --- |
-| Ctrl T	| Toggle line 	| New file in insntance	|  Browser
-| Ctrl N 	| New file 	| New file in new instance	| Browser
+| Ctrl T	| Toggle line 	| New file in instance	| Browsers
+| Ctrl N 	| New file 	| New file in new instance	| Browsers
 | Ctrl R	| Reload 	| Toggle comment 	| Matlab
-| F5		| Run...	| Run current file	| 
+| F5		| Run...	| Run current file	| Matlab
+| Ctrl ,	| ---	| Preferences 	| Lightroom
+| Ctrl Shift 8	| --- | Show space and tab 	| Word
 
-Custom language: AHK
+
+Included custom markup language: AHK
 
