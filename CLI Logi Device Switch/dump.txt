@@ -1,0 +1,81 @@
+Opening device, vid/pid:0x046D/0xC52B, usagePage/usage: FF00/1
+Device opened
+Writing output report of 7-bytes...wrote 7 bytes:
+ 10 0F 0F 1E 01 00 00 -> This changed the mouse to device 2
+ 10 01 0A 1E 01 00 00 -> This changed the keybo to device 2
+  A  B  C  D  E  F  G
+A = always 0x10, although Solaar seems to use 0x11.
+B = Device num linked to unifying: 0x01 for the first device (the keyboard), 0x02 for the second device (the mouse). 0x00 Is supposed to be the Bluetooth device, but I haven't tested that.
+C = ?
+D = ? -> Seems to be always 0x1b or 0x1e, they seem to be equivalent
+E = channel to switch to: 0x00 for channel1, 0x01 for channel2 (and I guess 0x02 for channel 3)
+F = always 0x00.
+G = always 0x00.
+
+.\hidapitester.exe --vidpid 046D:C52B --usage 0x0001 --usagePage 0xFF00 --open --length 7 --send-output 0x10,0x0F,0x0F,0x1e,0x01,0x00,0x00
+
+.\hidapitester.exe --vidpid 046D:C548 --usage 0x0001 --usagePage 0xFF00 --open --length 7 --send-output 0x10,0x01,0x0A,0x1b,0x01,0x00,0x00
+	This made keybo blink dev2, but didn't switch
+
+From device mng
+Mouse
+	USB\VID_046D&PID_C52B&MI_00\9&5F6995A&2&0000
+	USB\VID_046D&PID_C52B&REV_2411&MI_00
+	046D:C52B
+
+Teclado
+	USB\VID_046D&PID_C548&MI_00\9&2DCC39BF&1&0000
+	USB\VID_046D&PID_C548&REV_0503&MI_00
+	046D:C548
+
+BT Devices
+(A4:77:58:3B:8D:4A)     Soundcore Space A40     Headset
+(54:2A:1B:BB:1B:5E)     Sonos Roam Andressa (SONOS 1B5E)        Loudspeaker
+(4C:87:5D:A1:F8:2D)     Blackout        Headphones
+(BC:FD:0C:04:3E:A6)     BlueZ 5.54      Unknown
+
+.\hidapitester.exe --vidpid 046D:C52B --usage 0x0001 --usagePage 0xFF00 --open --length 7 --send-output 0x10,0x02,0x0A,0x1b,0x01,0x00,0x00 & echo "           Code above is your device           " & echo. & echo. & pause
+.\hidapitester.exe --vidpid 046D:C52B --usage 0x0001 --usagePage 0xFF00 --open --length 7 --send-output 0x10,0x02,0x0A,0x1e,0x01,0x00,0x00 & echo "           Code above is your device           " & echo. & echo. & pause
+	Sem press and hold, o mouse trocou aqui
+
+
+
+
+@echo off
+REM substitute the long "path" you copied above
+set BT_PATH="\\?\HID#{00001812-0000-1000-8000-00805f9b34fb}_Dev_VID&02046d_PID&b378_REV&0015_de7417a4bae5&Col05#9&30c434bd&0&0004#{4d1e55b2-f16f-11cf-88cb-001111000030}"
+
+REM first shot: same B and D that work on the dongle
+.\hidapitester.exe --open-path %BT_PATH% --length 11 --send-output 0x11,0x0F,0x0F,0x1B,0x00,0x00,0x00,0x00,0x00,0x00,0x00
+rem								     AA   BB   CC   DD   EE
+
+REM first shot: same B and D that work on the dongle
+.\hidapitester.exe --vidpid 046d:b378 --open --length 11 --send-output 0x11,0x0F,0x0F,0x1B,0x00,0x00,0x00,0x00,0x00,0x00,0x00
+rem								         AA   BB   CC   DD   EE   FF   GG
+
+
+pause
+
+REM .\hidapitester.exe --vidpid 046D:b378 --usage 0x0202 --usagePage 0xff43 --open --length 11 --send-output 0x11,0x00,0x09,0x1E,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00
+REM .\hidapitester.exe --vidpid 046D:b378 --usage 0x0202 --usagePage 0xff43 --open --length 11 --send-output 0x11,0x00,0x09,0x1E,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00
+REM .\hidapitester.exe --vidpid 046D:b378 --usage 0x0202 --usagePage 0xff43 --open --length 11 --send-output 0x11,0x00,0x09,0x1E,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00
+REM .\hidapitester.exe --vidpid 046D:b378 --usage 0x0202 --usagePage 0xff43 --open --length 11 --send-output 0x11,0x00,0x09,0x1E,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00
+REM .\hidapitester.exe --vidpid 046D:b378 --usage 0x0202 --usagePage 0xff43 --open --length 11 --send-output 0x11,0x00,0x09,0x1E,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00
+
+for %%b in (0,1,10) do (
+for %%c in (00 01 0A 0F) do (
+REM for %%c in (00 until FF) do (
+for %%d in (1b 1d) do (
+  .\hidapitester.exe --vidpid 046D:b378 --usage 0x0202 --usagePage 0xff43 --open --length 11 --send-output 0x11,0x0%%b,0x%%c,0x%%d,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0 & pause
+  REM .\hidapitester.exe --open-path %BT_PATH% --open --length 11 --send-output 0x%%a,0x0%%b,0x%%c,0x%%d,0x00,0,0,0,0,0,0
+  timeout /T 1 >NUL
+)))
+
+
+REM for %%d in (1B 1E 15 14) do (
+  REM echo d is now %%d
+  REM .\hidapitester.exe --path %BT_PATH% --open --length 11 --send-output 0x11,0x%GOOD_B%,0x0F,0x%%d,0x01,0,0,0,0,0,0
+  REM timeout /T 1 >NUL
+REM )
+
+pause
