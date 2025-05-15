@@ -11,6 +11,7 @@ What i changed from default:
 - Hide menu bar (with all the icons)
 - Hide toolbar (File, Edit, ...)
 - Unchecked "Display bookmark" for more horizontal place
+- Always in multi instance mode
 
 | Hotkey | Was | Is | Source |
 | --- | --- | --- | --- |
