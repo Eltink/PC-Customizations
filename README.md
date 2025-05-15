@@ -1,3 +1,8 @@
+# Registry changes
+https://learn.microsoft.com/en-us/office/troubleshoot/excel/force-excel-to-open-new-instance
+1 - Open registry HKEY_CURRENT_USER\Software\Microsoft\Office\16.0\Excel\Options
+2 - New DWORD Value -> "DisableMergeInstance" -> set to 1
+
 # Notepad++ custom settings
 
 Actual NPP settings are in %appdata%\Notepad++, not C:\Program Files\Notepad++ (where startmenu link takes you)
