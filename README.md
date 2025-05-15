@@ -2,6 +2,7 @@
 https://learn.microsoft.com/en-us/office/troubleshoot/excel/force-excel-to-open-new-instance 
 Ctr Z will only apply to current file, not all (why is this even a feature??)
 Opening or closing a file wont change the Virtual Desktop
+"this method does not work for opening existing workbooks, only for new workbooks."
 
 1 - Open registry HKEY_CURRENT_USER\Software\Microsoft\Office\16.0\Excel\Options 
 
