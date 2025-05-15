@@ -1,9 +1,12 @@
 # Registry changes
 https://learn.microsoft.com/en-us/office/troubleshoot/excel/force-excel-to-open-new-instance 
+Ctr Z will only apply to current file, not all (why is this even a feature??)
+Opening or closing a file wont change the Virtual Desktop
 
 1 - Open registry HKEY_CURRENT_USER\Software\Microsoft\Office\16.0\Excel\Options 
 
 2 - New DWORD Value -> "DisableMergeInstance" -> set to 1
+
 
 # Notepad++ custom settings
 
