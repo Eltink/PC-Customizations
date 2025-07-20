@@ -36,3 +36,8 @@ What i changed from default:
 
 Included custom markup language: AHK
 
+# VLC
+Made settings closer to YouTube
++-* for speed
+Arrow for small steps, Shift+Arrow for bigger
+Show current speed
